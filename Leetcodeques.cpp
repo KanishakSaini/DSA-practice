@@ -38,4 +38,28 @@ public:
             ptr2=ptr2->next;
         }return nullptr;
     }
-};*/
+};
+
+//1922
+ const long long MOD = 1e9 + 7;
+public:
+
+    long  long power(long long base , long long exp){ //binary exponentiation
+        long long ans = 1;  
+        while(exp>0){
+            if(exp & 1){ //checking if exp is odd
+                ans = (ans * base)%MOD;
+            }
+
+            base = (base * base)%MOD; 
+
+            exp >>= 1; //dividing exp by 2 
+        }
+        return ans;
+    }
+    int countGoodNumbers(long long n) {
+        long long  even = (n+1)/2;
+        long long  odd = n/2;
+        return (power(5,even)*power(4,odd))%MOD;
+    }
+        */
