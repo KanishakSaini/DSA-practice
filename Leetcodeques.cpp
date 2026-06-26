@@ -62,4 +62,32 @@ public:
         long long  odd = n/2;
         return (power(5,even)*power(4,odd))%MOD;
     }
-        */
+        
+
+    //8
+   int myAtoi(string s) {
+        int i = 0;
+        long long result = 0;
+        int sign = 1;
+        while (i < s.size() && s[i] == ' ') i++;
+    
+    if (s[i] == '-' || s[i] == '+') {
+        if (s[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (i < s.size() ) {
+        if(!isdigit(s[i])) break;
+
+        int digit = s[i++] - '0';
+
+        if(result > INT_MAX/10 || (result == INT_MAX/10 && digit > 7))
+            return (sign == 1)? INT_MAX : INT_MIN;
+        result = result * 10 + digit;
+    }
+
+    
+    return result * sign;
+}
+}*/
+
