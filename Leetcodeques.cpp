@@ -89,5 +89,31 @@ public:
     
     return result * sign;
 }
-}*/
+} 
+
+//138
+
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        
+        Node * temp = head;
+        unordered_map <Node*,Node*> mp;
+        while(temp){
+            mp[temp] = new Node(temp->val);
+            temp = temp-> next;
+        }
+
+        temp = head;
+        while(temp){
+            mp[temp] -> next = mp[temp->next];
+            mp[temp] -> random = mp[temp->random];
+
+            temp = temp->next;
+        }
+
+        return mp[head];
+    }
+};*/
+
 
