@@ -150,6 +150,42 @@ public:
         return newHead;
     }
 };
+
+
+//25 
+
+lass Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode dummy(0);
+        dummy.next = head;
+        ListNode * prevgroup = &dummy;
+
+        while(true){
+            ListNode * kth = prevgroup;
+            for(int i = 0 ; i<k && kth ; i++){
+                kth = kth -> next ;
+            }
+
+            if(!kth) break ;
+
+            ListNode  *nextgroup = kth -> next ;
+            ListNode * prev = nextgroup;
+            ListNode * curr = prevgroup->next;
+
+            while(curr != nextgroup){
+                ListNode * nxt = curr -> next ;
+                curr -> next = prev ;
+                prev = curr ;
+                curr = nxt ;
+            }
+
+            ListNode * temp = prevgroup->next; //storing previous head
+            prevgroup->next = kth ; //connecting previous head , which is now tail to next node (reinitializing dummy to head of LL )
+            prevgroup = temp; // marking previous group to tail of prevgroup
+
+        }
+        return dummy.next;
+    }
+};
 */
-
-
