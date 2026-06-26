@@ -114,6 +114,42 @@ public:
 
         return mp[head];
     }
-};*/
+};
+
+//61
+
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if( !head || !head->next || k==0 ){
+            return head;
+        }
+
+        int n =1;
+
+        ListNode * temp = head;
+        while(temp->next){
+            n++;
+            temp = temp -> next ;
+        }
+
+        ListNode * tail = temp ;
+        tail -> next = head;
+
+        k %=n;
+        n = n-k-1; //-1 because tail will be modified 
+        temp = head;
+
+        while(n--){
+            temp = temp -> next;
+        }
+
+        ListNode * newHead = temp->next;
+        temp -> next = nullptr;
+
+        return newHead;
+    }
+};
+*/
 
 
