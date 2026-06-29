@@ -239,5 +239,34 @@ class Solution {
         dfs(0,candidates,target);
         return ans;
     }
+};                                    
+                                       //40 ques
+class Solution {
+public:
+        vector <vector<int>> ans;
+        vector <int> path ;
+
+        void dfs (int start , vector <int> candidates , int target){
+            if(target==0) {
+               ans.push_back(path);
+               return ;
+            }
+            for( int i = start ; i<candidates.size() ; i++){
+                if(i>start && candidates[i]==candidates[i-1]) continue;   //this ques may contains duplicates in input 
+                if(candidates[i]>target) continue;
+
+                path.push_back(candidates[i]);
+                dfs(i+1,candidates,target-candidates[i]); //i+1 becoz sam element cant be used
+                path.pop_back();  //to remove last choosen element
+                
+            }
+        }
+
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
+        dfs(0,candidates,target);
+        return ans;
+    }
+    
 };
 */
