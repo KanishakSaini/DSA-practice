@@ -240,7 +240,7 @@ class Solution {
         return ans;
     }
 };                                    
-                                       //40 ques
+                                   //40 ques
 class Solution {
 public:
         vector <vector<int>> ans;
@@ -268,5 +268,27 @@ public:
         return ans;
     }
     
+};
+                                        //78
+class Solution {
+public:
+vector <int> path;
+vector <vector<int>> ans;
+    void dfs(int indx , vector <int> &nums){
+       ans.push_back(path);  //every state represents one  subset
+
+       for(int i = indx ; i<nums.size() ; i++ ){
+        path.push_back(nums[i]);
+
+        dfs(i+1,nums); 
+
+        path.pop_back(); //backtrack
+       }
+        
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        dfs(0,nums);
+        return  ans;
+    }
 };
 */
