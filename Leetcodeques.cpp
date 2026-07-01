@@ -291,4 +291,28 @@ vector <vector<int>> ans;
         return  ans;
     }
 };
+                                      //90 ques
+                                      class Solution {
+public:
+vector <vector<int>> ans;
+vector <int> path ;
+    void dfs(int indx , vector<int>&nums){
+        ans.push_back(path);
+
+        for( int i = indx ; i<nums.size() ; i++){
+            if(i>indx && nums[i]==nums[i-1]) continue;
+
+            path.push_back(nums[i]);
+
+            dfs(i+1,nums);
+            path.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin() , nums.end());
+        dfs(0,nums);
+        return ans;
+    }
+};
 */
