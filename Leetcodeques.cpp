@@ -314,5 +314,34 @@ vector <int> path ;
         dfs(0,nums);
         return ans;
     }
+}; 
+                                   //216
+                                   class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> temp;
+
+    void solve(int indx, int k, int target) {
+        if (target == 0 && k == 0) {
+            ans.push_back(temp);
+            return;
+        }
+
+        if(k==0 || target < 0) return ; //invalid state
+
+        for (int i = indx; i <= 9; i++) {
+            if (i > target) break;
+
+            temp.push_back(i);   
+            solve(i + 1, k-1, target - i);
+            temp.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+
+        solve(1, k, n);
+        return ans;
+    }
 };
 */
