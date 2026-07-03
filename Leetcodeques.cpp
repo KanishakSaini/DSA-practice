@@ -370,4 +370,43 @@ public:
         return result;
     }
 };
+                             //79 ques
+                    class Solution {
+public:
+    bool solve (vector<vector<char>>& board, string word,int row , int col, int indx){
+        if(board[row][col]!=word[indx]) return false;
+        if(word.size()-1 == indx) return true ;
+
+        char ch = board[row][col];
+        board[row][col] = '#';
+
+        if(row>0 && solve(board,word,row-1,col,indx+1)){
+           board[row][col] = ch;
+           return true;
+        }
+        else if(row<board.size()-1 && solve(board,word,row+1 , col , indx+1)){
+            board[row][col] = ch;
+            return true;
+        }
+        else if(col>0 && solve(board,word, row, col-1 ,  indx+1)){
+            board[row][col]=ch;
+            return true;
+        }
+        else if(col<board[0].size()-1 && solve(board,word,row, col+1 , indx+1)){
+            board[row][col]=ch;
+            return true;
+        }
+
+        board[row][col] = ch;
+        return false;
+
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        for (int i = 0 ; i<board.size();i++){
+            for( int j = 0  ; j<board[0].size() ; j++){
+                if(solve(board,word,i,j,0)) return  true;
+            }
+        }return false;
+    }
+};
 */
