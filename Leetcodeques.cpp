@@ -452,4 +452,38 @@ public:
         return ans;
     }
 };
+                                         //282
+                                         class Solution {
+public:
+    vector <string> ans;
+    void solve (string num , int target ,int index, long long currval , long long prenum , string path ){
+        if(index==num.size()){
+            if(currval==target){
+                ans.push_back(path);
+            }return ;
+        }
+
+        for (int i= index ; i<num.size() ; i++){
+            if(i>index && num[index] == '0') break;
+
+            string str = num.substr(index,i-index+1);
+            long long currnum = stoll(str);
+
+            if(index==0) solve(num,target,i+1,currnum,currnum,str);
+            else {
+                solve(num, target ,i+1 ,currval + currnum,currnum,path +"+"+ str);
+                solve(num, target, i+1 ,currval - currnum,-currnum, path +"-"+str);
+                solve(num , target ,i+1
+                ,currval-prenum + (currnum*prenum)
+                ,currnum*prenum,
+                path+"*"+str);
+            }
+        }
+    }
+    vector<string> addOperators(string num, int target) {
+        ans.clear();
+        solve(num,target,0,0,0,"");
+        return ans;
+    }
+};
 */
