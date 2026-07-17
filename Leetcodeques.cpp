@@ -620,5 +620,54 @@ int prevmin = INT_MAX;
  * obj->pop();
  * int param_3 = obj->top();
  * int param_4 = obj->getMin();
- */
+  
+
+                                                     //496ques
+                                                     class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        // int s1 = nums1.size();    //brute force
+        // int s2 = nums2.size();
+        // vector<int> result;
+
+        // for (int i = 0; i < s1; i++) {
+        //     bool flag = false;
+        //     for (int j = 0; j < s2; j++) {
+        //         if (nums1[i] == nums2[j]) {
+        //             for (int k = j + 1; k < s2; k++) {
+        //                 if (nums2[k] > nums1[i]) {
+        //                     result.push_back(nums2[k]);
+        //                     flag = true;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }if (flag == false)
+        //         result.push_back(-1);
+
+        // }return result;
+
+        stack<int> st;
+        unordered_map<int, int> nge; //next greater element
+
+        for (int i : nums2) {
+            while (!st.empty() && i>st.top()){
+                nge[st.top()] = i ; //marking next greater element of st.top()
+                st.pop();
+            }
+            st.push(i);
+        }
+
+        while(!st.empty()){
+            nge[st.top()] = -1;
+            st.pop();
+        }
+
+        vector <int> result;
+        for (int num : nums1){
+            result.push_back(nge[num]);
+        }
+        return result;
+        }
+    };
 */
