@@ -579,4 +579,46 @@ public:
         } 
         return  count ;  }
 };
+                                           //155
+                                        class MinStack {
+public:
+stack <int> s;
+stack <int> minstack;
+int min = INT_MAX;
+int prevmin = INT_MAX;
+    MinStack() {
+        
+    }
+    
+    void push(int value) {
+        if(minstack.empty() || value<minstack.top()){
+            minstack.push(value);
+        }else {
+            minstack.push(minstack.top());
+        }
+        s.push(value);
+    }
+    
+    void pop() {
+        minstack.pop();
+        s.pop();
+    }
+    
+    int top() {
+        return s.top();
+    }
+    
+    int getMin() {
+        return minstack.top();
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(value);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
 */
