@@ -716,4 +716,55 @@ public:
 return water;
     }
 };
+                                        //907
+                                        class Solution {
+public:
+    int sumSubarrayMins(vector<int>& arr) {
+       int n = arr.size();   //does overflow 
+       
+        long long sum =0;
+        int MOD = 1e9 + 7;
+        /*
+        for(int start = 0 ; start <n ; start ++){
+            int minn =INT_MAX;
+            for(int end = start ; end <n ; end++){
+                minn = min(minn,arr[end]);
+                sum = (sum+minn)%MOD;
+            }
+        }return sum;
+
+        stack <int> stk ;
+        vector <int> leftmin(n,-1);
+        vector <int> rightmin(n,-1);
+        for(int i= 0 ;i<n ;i++){
+            while(!stk.empty() && arr[stk.top()]>arr[i]){
+                stk.pop();
+            }
+            if(!stk.empty()){
+            leftmin[i] = stk.top();
+
+            }
+            stk.push(i);
+        }
+        while(!stk.empty()) stk.pop();
+       
+        for(int i=n-1 ; i>=0 ; i--){
+            while(!stk.empty() && arr[stk.top()]>=arr[i]){
+               
+                stk.pop();
+            }
+            if(stk.empty()) rightmin[i] = n;
+            else {
+                rightmin[i] = stk.top();
+            }
+            stk.push(i);
+        }
+
+        for(int i=0 ; i<n ; i++){
+            int leftchoice = i- leftmin[i];
+            int rightchoice = rightmin[i] - i;
+            sum = (sum +(1LL*arr[i]*leftchoice)%MOD*rightchoice)%MOD ;
+        }return sum ;
+    }
+};
 */
